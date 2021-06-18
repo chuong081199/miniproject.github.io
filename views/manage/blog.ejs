@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("head")%>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(function () {
+            $.fn.limit = function ($n) {
+                this.each(function () {
+                    var allText = $(this).html();
+                    var tLength = $(this).html().length;
+                    var startText = allText.slice(0, $n);
+                    if (tLength >= $n) {
+                        $(this).html(startText + '...');
+                    } else {
+                        $(this).html(startText);
+                    };
+                });
+
+                return this;
+            }
+            $('.ct td').limit(300);
+        });
+    </script>
+
+    <body>
+        <div class="page-wrapper chiller-theme toggled">
+            <%- include("menu")%>
+                <main class="page-content">
+                    <div class="container-fluid">
+                        <%if(data.length> 0){%>
+                            <div class="row">
+                                <div class="container">
+                                    <h1 class="mb-4">PRODUCTS LIST</h1>
+                                    <div class="col-sm-12 col-md-12 col-lg-12 colxl-12">
+                                        <div class="tm-bg-primary">
+                                            <table class="table">
+                                                <thead>
+                                                    <th>&nbsp</th>
+                                                    <th>TITLE</th>
+                                                    <th>IMAGE</th>
+                                                    <th>CONTENT</th>
+                                                    <th>&nbsp</th>
+                                                </thead>
+                                                <tbody class="ct">
+                                                    <%data.forEach((blog)=>{%>
+                                                        <tr>
+                                                            <th scope="row"><a href="blog/editBlog/<%- blog._id%>">
+                                                                    <i class="fas fa-edit edit-icon"></i>
+                                                                </a>
+                                                            </th>
+                                                            <td class="product-name">
+                                                                <%- blog.title%>
+                                                            </td>
+                                                            <td class="product-name">
+                                                                <img src="../../static/image/<%- blog.image%>"
+                                                                    class="edit-image" alt="">
+                                                            </td>
+                                                                <td class="product-name">
+                                                                    <%- blog.content%>
+                                                                </td>
+                                                            <td>
+                                                                <a href="blog/deleteBlog/<%- blog._id%>"
+                                                                    class="product-delete-link">
+                                                                    <i
+                                                                        class="far fa-trash-alt product-delete-icon delete-icon"></i>
+                                                                </a>
+                                                            </td>
+
+                                                        </tr>
+                                                        <%})%>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <a href="/admin/blog/addBlog" class="btn btn-light btn-block text-uppercase mb-3">ADD NEW
+                                            BLOG</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <%}else{%>
+                                <div class="row"></div>
+                                <div class="form-group">
+                                    <div class="container">
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"></div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                            <h1 class="mb-5">There is no category</h1>
+                                            <a href="/admin/blog/addBlog"
+                                                class="btn btn-light btn-block text-uppercase mb-3">ADD NEW
+                                                BLOG</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
+                    </div>
+                </main>
+        </div>
+    </body>
+
+</html>

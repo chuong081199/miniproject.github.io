@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../static/css/style.css">
+    <link rel="stylesheet" href="../../../static/css/bootstrap-grid.css">
+    <script src="../../../static/js/bootstrap.min.js"></script>
+    <script src="../../../static/js/jquery.js"></script>
+    <script src="../../../static/js/main.js"></script>
+    <title>PTTKHTTT</title>
+
+    <script src='https://cdn.tiny.cloud/1/a57kalmwigr1bzkrg6x9lnm2zd95kb9ftfvozv3lk9xk6hid/tinymce/5/tinymce.min.js'
+        referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+</head>
+
+<body>
+    <div class="page-wrapper chiller-theme toggled" style="font-weight: 600">
+        <%- include("menu")%>
+            <main class="page-content">
+                <div class="container-fluid" style="font-size: 20;">
+                    <div class="row">
+                        <div class="container">
+                            <form action="postEditBlog" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <div class="form-control mb-1">
+                                        <span>Title: </span> <br>
+                                        <input type="text" name="name" value="<%- data.title%>"
+                                            class="form-control validate" required>
+                                    </div>
+                                    <div class="form-control mb-1">
+                                        <span>
+                                            Image
+                                        </span>
+                                        <img src="../../../static/image/<%- data.image%>" class="edit-image" alt="">
+                                        <input type="file" name="nameImage" class="form-control validate">
+                                    </div>
+                                    <div class="form-control mb-1">
+                                        <span>
+                                            Content
+                                        </span>
+                                        <textarea class="cont" id="mytextarea" name="mytextarea"><%- data.content%></textarea>
+                                    </div>
+                                    <input type="hidden" name="id" value="<%- data._id%>" >
+                                    <div class="form-control">
+                                        <input type="submit" value="ADD NEW PRODUCT"
+                                            class="btn btn-light btn-block text-uppercase">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+    </div>
+
+</body>
+
+</html>

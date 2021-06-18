@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("head")%>
+
+    <body>
+        <div class="page-wrapper chiller-theme toggled">
+            <%- include("menu")%>
+                <main class="page-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="container">
+                                <h1 class="mb-4">ODER</h1>
+                                <div class="col-sm-12 col-md-12 col-lg-12 colxl-12">
+                                    <div class="tm-bg-primary">                                        
+                                        <h1><button onclick="exportTableToExcel('tblData')"><i class="fas fa-file-excel"></i></button></h1>
+                                        <table class="table" id="tblData">
+                                            <thead>
+                                                <th>NAME</th>
+                                                <th>PHONE</th>
+                                                <th>ADDRESS</th>
+                                                <th>PAYMENT</th>
+                                                <th colspan="4">PRODUCTS</th>
+                                                <th colspan="4">&nbsp</th>
+                                            </thead>
+                                                <% data.forEach((items)=>{%>
+                                                <%if(items.check === false){%>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="product-name"
+                                                                rowspan="<%- items.products.length+3%>">
+                                                                <%- items.name%>
+                                                            </td>
+                                                            <td class="product-name"
+                                                                rowspan="<%- items.products.length+3%>">
+                                                                <%- items.phone%>
+                                                            </td>
+                                                            <td class="product-name"
+                                                                rowspan="<%- items.products.length+3%>">
+                                                                <%- items.add%>
+                                                            </td>
+                                                            <td class="product-name"
+                                                                rowspan="<%- items.products.length+3%>">
+                                                                <%- items.pay%>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>code</th>
+                                                            <% items.products.forEach((code)=>{%>
+                                                                <td class="product-name">
+                                                                    <%- code%>
+                                                                </td>
+                                                                <%})%>
+                                                                <td rowspan="4">
+                                                                    <a href="check/<%- items._id%>"><i class="fas fa-check-circle delete-icon"></i></a>
+                                                                </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>quantity</th>
+                                                            <% items.quantity.forEach((qty)=>{%>
+                                                                <td class="product-name">
+                                                                    <%- qty%>
+                                                                </td>
+                                                                <%})%>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>price</th>
+                                                            <% items.price.forEach((pr)=>{%>
+                                                                <td class="product-name">
+                                                                    <%- pr%>
+                                                                </td>
+                                                                <%})%>
+                                                        </tr>
+                                                    </tbody>
+                                                <%}%>
+                                                <%})%>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+        </div>
+    </body>    <script>
+        function exportTableToExcel(tableID, filename = ''){
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+        
+        // Specify file name
+        filename = filename?filename+'.xls':'excel_data.xls';
+        
+        // Create download link element
+        downloadLink = document.createElement("a");
+        
+        document.body.appendChild(downloadLink);
+        
+        if(navigator.msSaveOrOpenBlob){
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob( blob, filename);
+        }else{
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+        
+            // Setting the file name
+            downloadLink.download = filename;
+            
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+    </script>
+
+</html>

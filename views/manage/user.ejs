@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("head")%>
+
+    <body>
+        <div class="page-wrapper chiller-theme toggled">
+            <%- include("menu")%>
+                <main class="page-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-11 colxl-11">
+                                <table class="table">
+                                    <thead style=" font-size: 25px;">
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Registration Date</th>
+                                        <th scope="col">&nbsp</th>
+                                    </thead>
+                                    <tbody>
+                                        <% data.forEach((user)=>{%>
+                                            <%if(user.email == "chuongnguyen417@gmail.com"){%>
+                                            <tr>
+                                                <td class="product-name">
+                                                    <%- user.name%>
+                                                </td>
+                                                <td class="product-name">
+                                                    <%- user.email%>
+                                                </td>
+                                                <td class="product-name">
+                                                    <%- user.date%>
+                                                </td>                                      
+                                            </tr>
+                                       <% }else{%>
+                                            <tr>
+                                                <td class="product-name">
+                                                    <%- user.name%>
+                                                </td>
+                                                <td class="product-name">
+                                                    <%- user.email%>
+                                                </td>
+                                                <td class="product-name">
+                                                    <%- user.date%>
+                                                </td>
+                                                    <td>
+                                                        <a href="user/deleteUser/<%- user._id%>"
+                                                            class="product-delete-link">
+                                                            <i
+                                                                class="far fa-trash-alt product-delete-icon delete-icon"></i>
+                                                        </a>
+                                                    </td>
+                                                                                          
+                                            </tr>
+                                        <%}%>
+                                        <%})%>
+                                    </tbody>
+                                </table>
+                                <a href="/admin/register" class="btn btn-light btn-block text-uppercase mb-3"><b>Register Admin</b></a>
+                            </div>
+                        </div>
+                        </div>  
+                    </div>
+                </main>
+        </div>
+    </body>
+
+</html>

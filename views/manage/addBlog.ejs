@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("head")%>
+   
+    <script src='https://cdn.tiny.cloud/1/a57kalmwigr1bzkrg6x9lnm2zd95kb9ftfvozv3lk9xk6hid/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+    <script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+    </script>
+ </head>
+<body>
+    <div class="page-wrapper chiller-theme toggled" style="font-weight: 600">
+        <%- include("menu")%>
+            <main class="page-content">
+                <div class="container-fluid" style="font-size: 20;">
+                    <div class="row">
+                        <div class="container">
+                            <form action="postBlog" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <div class="form-control mb-1">
+                                        <span>Title: </span> <br>
+                                        <input type="text" name="name" class="form-control validate" required>
+                                    </div>
+                                    <div class="form-control mb-1">
+                                        <span>
+                                            Image
+                                        </span> 
+                                        <input type="file" name="nameImage" class="form-control validate" required>
+                                    </div>
+                                    <div class="form-control mb-1">
+                                        <span>
+                                            Content
+                                        </span>
+                                        <textarea class="cont" id="mytextarea" name="mytextarea"></textarea>
+                                    </div>
+                                    <div class="form-control">
+                                        <input type="submit" value="ADD NEW BLOG"
+                                            class="btn btn-light btn-block text-uppercase">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("head")%>
+
+    <body>
+        <%- include("header")%>
+            <div class="page-heading products-heading header-text">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-xl-6">
+                            <table class="table">
+                                <thead>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th>&nbsp</th>
+                                </thead>
+                                <tbody>
+                                    <%data.forEach((items)=>{%>
+                                        <tr>
+                                            <td>
+                                                <%- items.item.name%>
+                                            </td>
+                                            <td>
+                                                <%- items.qty%>
+                                            </td>
+                                            <td>
+                                                <%- items.price%>
+                                            </td>
+                                            <!-- <td>
+                                                <a class="btn btn-danger" href="#"><i class="fa fa-trash"></i></a>
+                                            </td> -->
+                                        </tr>
+                                    <%})%>
+                                        <tr>
+                                            <td>Tổng số tiền thanh toán</td>
+                                            <td></td>
+                                            <td>
+                                                <%-price%>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <button class="btn btn-success"><a href="checkOut">Đi tới thanh toán</a></button>
+                            <button class="btn btn-link"><a href="products"> Tiếp tục mua sắm</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      <%- include("footer")%>
+
+            <%- include("link")%>
+    </body>
+
+</html>

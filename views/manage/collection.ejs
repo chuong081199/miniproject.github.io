@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("head")%>
+
+    <body>
+        <div class="page-wrapper chiller-theme toggled">
+            <%- include("menu")%>
+                <main class="page-content">
+                    <div class="container-fluid">
+                        <%if(data.length > 0){%>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-6 colxl-6">
+                                <div class="tm-bg-primary">
+                                    <table class="table">
+                                        <h3 class="mb-3 block-title">CATEGORY</h3>
+                                        <tbody>
+                                            <%data.forEach((collection)=>{%>
+                                                <th class="name">
+                                                    <%-collection.name%>
+                                                </th>
+                                                <%collection.category.forEach((category)=>{%>
+                                                    <tr>
+                                                        <td scope="row"><a href="editCategory/<%- category._id%>"><i
+                                                                    class="fas fa-edit edit-icon"></i></a></td>
+                                                        <td class="product-name">
+                                                            <%-category.name%>
+                                                        </td>
+                                                        <td>
+                                                            <a href="deleteCategory/<%- category._id%>" class="product-delete-link">
+                                                                <i
+                                                                    class="far fa-trash-alt product-delete-icon delete-icon"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <%})%>
+                                                        <%})%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a href="addCategory" class="btn btn-light btn-block text-uppercase mb-3"><b>ADD
+                                    NEW CATEGORY</b></a>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6 colxl-6">
+                                <div class="tm-bg-primary">
+                                    <table class="table">
+                                        <h3 class="mb-3 block-title">COLLECTION</h3>
+                                        <tbody>
+                                            <%data.forEach((collection)=>{%>
+                                                <tr>
+                                                    <td scope="row"><a href="editCollection/<%-collection._id%>"><i
+                                                                class="fas fa-edit edit-icon"></i></a></td>
+                                                    <td class="product-name">
+                                                        <%-collection.name%>
+                                                    </td>
+                                                    <td>
+                                                        <a href="deleteCollection/<%-collection._id%>" class="product-delete-link">
+                                                            <i
+                                                                class="far fa-trash-alt product-delete-icon delete-icon"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <%})%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a href="addCollection"
+                                    class="btn btn-light btn-block text-uppercase mb-3"><b> ADD NEW COLLECTION</b></a>
+                            </div>
+                        </div>
+                    <%}else{%> 
+                        <div class="col-sm-12 col-md-12 col-lg-6 colxl-6">
+                            <div class="tm-bg-primary">
+                                <table class="table">
+                                    <h3 class="block-title">COLLECTION</h3>
+                                    <tbody>
+                                        <%data.forEach((collection)=>{%>
+                                            <tr>
+                                                <td scope="row"><a href="editCollection/<%-collection._id%>"><i
+                                                            class="fas fa-edit edit-icon"></i></a></td>
+                                                <td class="product-name">
+                                                    <%-collection.name%>
+                                                </td>
+                                                <td>
+                                                    <a href="deleteCollection/<%-collection._id%>" class="product-delete-link">
+                                                        <i
+                                                            class="far fa-trash-alt product-delete-icon delete-icon"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <%})%>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <a href="addCollection"
+                                class="btn btn-light btn-block text-uppercase mb-3"><b> ADD NEW COLLECTION</b></a>
+                        </div>
+                    <%}%>
+                </main>
+
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("head")%>
+
+    <body>
+        <div class="page-wrapper chiller-theme toggled">
+            <%- include("menu")%>
+                <main class="page-content">
+                    <div class="col-sm-4 col-lg-4 col-md-2 col-xl-2"></div>
+                    <div class="col-sm-4 col-md-4 col-lg-6 col-xl-6">
+                        <div class="form-group mb-3">
+                            <form action="postCollection" method="POST">
+                                <div class="form-group mb-3">
+                                    <input type="text" placeholder="Tên Bộ Sưu Tập" name="name"
+                                        class="form-control validate" required>
+                                </div>
+                                <div class="form-control"><input type="submit" value="ADD NEW"
+                                        class="btn btn-light btn-block text-uppercase">
+                                    </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4 col-lg-4 col-md-2 col-xl-2"></div>
+                </main>
+        </div>
+
+        </form>
+    </body>
+
+</html>

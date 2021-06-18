@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("head")%>
+
+  <body>
+    <%- include("header")%>
+      <!-- Page Content -->
+      <!-- Banner Starts Here -->
+      <div class="banner header-text">
+        <div class="owl-banner owl-carousel">
+          <div class="banner-item-01">
+            <div class="text-content">
+              <h4>Best Offer</h4>
+              <h2>New Arrivals On Sale</h2>
+            </div>
+          </div>
+          <div class="banner-item-02">
+            <div class="text-content">
+              <h4>Flash Deals</h4>
+              <h2>Get your best products</h2>
+            </div>
+          </div>
+          <div class="banner-item-03">
+            <div class="text-content">
+              <h4>Last Minute</h4>
+              <h2>Grab last minute deals</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Banner Ends Here -->
+
+      <div class="latest-products">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>Sản phẩm mới</h2>
+                <a href="products">Tất cả sản phẩm <i class="fa fa-angle-right"></i></a>
+              </div>
+            </div>
+            <%data.forEach((item)=>{%>
+              <div class="col-md-4">
+                <div class="product-item">
+                  <a href="products/<%- item._id%>"><img src="../../static/image/<%-item.image[0]%>" alt=""></a>
+                  <div class="down-content">
+                    <a href="products/<%- item._id%>">
+                      <h4>
+                        <%-item.name%>
+                      </h4>
+                    </a>
+                    <% const Price=item.price - (item.price * item.sale) / 100 %>
+                      <strong>
+                        <%- Price%>₫
+                      </strong>
+                      <% if(item.sale=="0" ){%>
+                        <div style="display: none;">
+                          <p style="text-decoration: line-through">
+                            <%- item.price%>
+                          </p> <span class="sale">-<%-item.sale%>%</span>
+                        </div>
+                        <%}else{%>
+                          <div>
+                            <p style="text-decoration: line-through">
+                              <%- item.price%>
+                            </p> <span class="sale">-<%-item.sale%>%</span>
+                          </div>
+                          <%}%>
+                            <ul class="stars">
+                              <li><i class="fa fa-star"></i></li>
+                              <li><i class="fa fa-star"></i></li>
+                              <li><i class="fa fa-star"></i></li>
+                              <li><i class="fa fa-star"></i></li>
+                              <li><i class="fa fa-star"></i></li>
+                            </ul>
+                  </div>
+                </div>
+              </div>
+              <%})%>
+          </div>
+        </div>
+      </div>
+
+      <div class="best-features">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>giới thiệu về house3D</h2>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="left-content">
+                <h4>Tìm kiếm các sản phẩm tốt nhất?</h4>
+                <p>Đầu tiên house3D xin gửi lời chào, kính chúc sức khỏe, thành công và lời cảm ơn Quý khách hàng đã ủng hộ những sản phẩm của chúng tôi.Với hơn 10 năm kinh nghiệm về sản xuất, kinh doanh, thiết kế và thi công sản phẩm nội thất phục vụ cho không gian: phòng khách, gia đình , khách sạn, … Nội thất Tuyên Tần thấu hiểu được nhu cầu và thị hiếu của người tiêu dùng, tập thể chúng tôi luôn chú trọng đầu tư, thiết kế những sản phẩm chất lượng nhằm mang đến một không gian sống thật thoải mái,ấm cúng và tiện nghi cho người sử dụng.Đến với Nội thất Tuyên Tần, bạn hoàn toàn yên tâm để chọn được cho mình một bộ nội thất phù hợp nhất, kết hợp đầy đủ, hài hòa các yếu tố về màu sắc, kiểu dáng, kích thước để làm cho không gian ngôi nhà bạn trở nên ấn tượng bởi chúng tôi luôn luôn lắng nghe và giải đáp mọi thắc mắc, băn khoăn của khách hàng. Cùng với đó, chúng tôi cam kết bán hàng với mức giá luôn thấp hơn so với các sản phẩm cùng loại trên thị trường – vì không qua bất kì đại lý trung gian nào.Luôn trân trọng và tri ân mỗi khách hàng, không ngừng phấn đấu để phục vụ Quý khách hàng ngày một tốt hơn. 
+                  Rất mong nhận được sự góp ý, quan tâm và hợp tác tích cực từ các đối tác và Quý khách hàng.</p>
+                <a href="/about" class="filled-button">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="call-to-action">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="inner-content">
+                <div class="row">
+                  <div class="col-md-8">
+                    <h4> <em> Sản phẩm </em> sáng tạo &amp; độc đáo </h4>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="#" class="filled-button">Purchase Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%- include("footer")%>
+
+        <%- include("link")%>
+          <script language="text/Javascript">
+            cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+            function clearField(t) {                   //declaring the array outside of the
+              if (!cleared[t.id]) {                      // function makes it static and global
+                cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                t.value = '';         // with more chance of typos
+                t.style.color = '#fff';
+              }
+            }
+          </script>
+
+
+  </body>
+
+</html>

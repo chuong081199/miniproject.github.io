@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("head")%>
+
+    <body>
+        <div class="page-wrapper chiller-theme toggled">
+            <%- include("menu")%>
+                <main class="page-content">
+                    <div class="row">
+                        <div class="col-sm-4 col-lg-4 col-md-2 col-xl-2"></div>
+                        <div class="col-sm-4 col-md-4 col-lg-6 col-xl-6">
+                            <h2 class="block-title">ADD NEW CATEGORY</h2>
+                            <form action="postCategory" method="post">
+                                <div class="form-group mb-3">
+                                    <div class="form-group mb-3">
+                                        <select name="collection" class="custom-select select-accounts">
+                                            <% data.forEach((category)=>{%>
+                                                <option value="<%- category._id%>">
+                                                    <%- category.name%>
+                                                </option>
+                                                <%})%>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="text" name="name" class="form-control validate" required>
+                                    </div>
+                                    <div class="form-control">
+                                        <input type="submit" value="ADD NEW"
+                                            class="btn btn-light btn-block text-uppercase">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-4 col-lg-4 col-md col-xl"></div>
+                    </div>
+                </main>
+        </div>
+    </body>
+
+</html>

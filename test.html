@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Học Web Chuẩn</title>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(function(){
+    $.fn.limit = function($n){
+        this.each(function(){
+            var allText   = $(this).html();
+            var tLength   = $(this).html().length;
+            var startText = allText.slice(0,$n);
+            if(tLength >= $n){
+                $(this).html(startText+'...');
+            }else {
+                $(this).html(startText);
+            };
+        });
+        
+        return this;
+    }
+    $('.list li').limit(120);
+});
+</script>
+</head>
+<body>
+<ul class='list'>
+    <li>Đây là một đoạn văn dài, đoạn văn này được giới hạn số lượng từ bằng cách sử dụng các function trong jquery kết hợp với phân tích chuỗi, nếu số lượng từ nhiều hơn 120 thì những từ từ 121 trở đi sẽ được ẩn đi và được thay thế bằng link.</li>
+    <li>Đây là một đoạn văn dài, đoạn văn này được giới hạn số lượng từ bằng cách sử dụng các function trong jquery kết hợp với phân tích chuỗi, nếu số lượng từ nhiều hơn 120 thì những từ từ 121 trở đi sẽ được ẩn đi và được thay thế bằng link. Nếu số lượng từ nhiều hơn 120 thì những từ từ 121 trở đi sẽ được ẩn đi và được thay thế bằng link.</li>
+    <li>Đây là một đoạn văn dài, đoạn văn này được giới hạn số lượng từ bằng cách sử dụng các function trong jquery kết hợp với phân tích chuỗi..</li>
+</ul>
+</body>
+</html>

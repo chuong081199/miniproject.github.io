@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("head")%>
+
+    <body>
+        <%- include("header")%>
+            <div class="page-heading products-heading header-text">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-xl-6">
+                            <form id="myForm" method="post">
+                                <div class="form-group" style="display: none;">
+                                    <%data.forEach((items)=>{%>
+                                        <input type="text" name="product" value=" <%- items.item.code%>">
+                                        <input type="text" name="qty" value="   <%- items.qty%>">
+                                        <input type="text" name="price" value="   <%- items.price%>">
+                                        <%})%>
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label for="name">Họ tên </label>
+                                        <input class="form-control" id="name" type="text" name="name" placeholder="name"
+                                            class="form-controll validate" required>
+                                    </div>
+                                    <div>
+                                        <label for="phone">Số điện thoại </label>
+                                        <input class="form-control" id="phone" type="number" name="phone"
+                                            placeholder="phone" class="form-controll validate" required>
+                                    </div>
+
+                                    <div>
+                                        <label for="address">Địa chỉ </label>
+                                        <input class="form-control" id="address" type="text" name="address"
+                                            placeholder="address" class="form-controll validate" required>
+                                    </div>
+
+                                </div>
+                                <div>
+                                    <p>Total Price: </p> <span>
+                                        <%- session.cart.Price%>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+
+                                    <input class="btn btn-success" type="submit" name="offline" id="offline"
+                                        value="order">
+                                </div>
+                                <div class="form-group">
+
+                                    <input class="btn btn-primary" type="submit" name="online" id="online"
+                                        value="paypal">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+      <%- include("footer")%>
+
+            <%- include("link")%>
+    </body>
+    <script>
+
+        $('#offline').click(function () {
+            var form = document.getElementById("myForm")
+            form.action = "checkOut";
+            form.submit();
+        });
+
+        $('#online').click(function () {
+            var form = document.getElementById("myForm")
+            form.action = "pay";
+            form.submit();
+        });
+
+    </script>
+
+</html>

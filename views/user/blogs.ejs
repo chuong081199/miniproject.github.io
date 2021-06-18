@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("head")%>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+  <script>
+    $(function () {
+      $.fn.limit = function ($n) {
+        this.each(function () {
+          var allText = $(this).html();
+          var tLength = $(this).html().length;
+          var startText = allText.slice(0, $n);
+          if (tLength >= $n) {
+            $(this).html(startText + '...');
+          } else {
+            $(this).html(startText);
+          };
+        });
+
+        return this;
+      }
+      $('.ct').limit(200);
+    });
+  </script>
+
+  <body>
+    <%- include("header")%>
+      <div class="page-heading products-heading header-text">
+        <div class="container">
+          <%data.forEach((blog)=>{%>
+            <div class="col-lg-6 col-md-6">
+              <div class="product-item">
+                <a href="blog/<%- blog._id%>"><img src="static/image/<%- blog.image[0]%>"></a>
+                <div class="down-content">
+                  <a href="blog/<%- blog._id%>">
+                    <div class="mb-3">
+                      <h4>
+                        <%- blog.title%>
+                      </h4>
+                    </div>
+                    <div class="ct mt-3">
+                      <%- blog.content%>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              </div>
+            <%})%>
+        </div>
+      <%- include("footer")%>
+
+        <%- include("link")%>
+          <script language="text/Javascript">
+            cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+            function clearField(t) {                   //declaring the array outside of the
+              if (!cleared[t.id]) {                      // function makes it static and global
+                cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                t.value = '';         // with more chance of typos
+                t.style.color = '#fff';
+              }
+            }
+          </script>
+
+  </body>
+
+</html>
